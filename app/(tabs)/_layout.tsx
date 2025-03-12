@@ -22,11 +22,17 @@ const _layout = () => {
     return (
     <Tabs  screenOptions={{
       tabBarShowLabel: false,
+ tabBarItemStyle: {
+          width: "100%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        },
       tabBarStyle:{
         backgroundColor: '#0f0d23',
         borderRadius:50,
         marginHorizontal: 20,
-        marginBottom: 14,
+        marginBottom:52,
         height:52,
         position:'absolute',
         overflow:'hidden',

@@ -9,8 +9,7 @@ const MovieCard = ({id,title,poster_path,vote_average,release_date}: Movie) => {
       <TouchableOpacity className='w-[30%]'>
       <Image
       source={{uri: poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'https://placeholder.co/600x100/1a1a1a/ffffff.png'}} 
-     className='w-full h-52 rounded-lg' 
-     resizeMode='cover'
+     className='w-full h-52 rounded-lg' resizeMode='cover'
       />
       <Text className='text-white text-sm font-bold mt-2' numberOfLines={1}>{title}</Text>
       <View className='flex-row  justify-start items-center gap-x-1'>

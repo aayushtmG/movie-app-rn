@@ -4,24 +4,31 @@ import React, { useEffect, useState } from 'react'
 import { images } from '@/constants/images'
 import { useRouter } from 'expo-router'
 import useFetch from '@/services/useFetch'
-import { FetchMovies } from '@/services/api'
+import { fetchMovies } from '@/services/api'
 import MovieCard from '@/components/MovieCard'
 import { icons } from '@/constants/icons'
+import { updateSearchCount } from '@/services/appwrite'
 
 const search = () => {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('');
-  const {data: movies,loading, error,refetch: loadMovies,reset} = useFetch(()=> FetchMovies({query: searchQuery}), false);
+  const {data: movies,loading, error,refetch: loadMovies,reset} = useFetch(()=> fetchMovies({query: searchQuery}), false);
   useEffect(()=>{
-    const func =async ()=>{
-      if(searchQuery){
+    const timeoutId = setTimeout(async ()=>{
+      if(searchQuery.trim()){
         await loadMovies();
       }else{
         reset();
       }
-    }
-    func();
+    },500)
+    return ()=> clearTimeout(timeoutId);
   },[searchQuery])
+  useFetch
+  useEffect(()=>{
+    if(movies?.length > 0 && movies?.[0]){
+      updateSearchCount(searchQuery,movies[0])
+    }
+  },[movies])
   return (
     <View className='flex-1 bg-primary'>
       <Image source={images.bg} className='absolute z-0' resizeMode='cover'/>
@@ -51,7 +58,7 @@ const search = () => {
             <SearchBar
              placeholder='Search for movies...'
              value={searchQuery}
-             onChangeText={(text)=>{console.log(text); setSearchQuery(text)}}
+             onChangeText={(text)=>setSearchQuery(text)}
             /> 
           </View>
           {
@@ -66,8 +73,16 @@ const search = () => {
             !loading && !error && searchQuery.trim() && movies?.length > 0 && ( <Text className='mb-3 text-xl font-bold text-white'>Search results for <Text className='text-accent ' >{searchQuery}</Text></Text>)
           }
           </>
+        } 
+        ListEmptyComponent={
+          !loading && !error ?  (
+            <View>
+              <Text className='text-gray-500 text-center'>
+              {searchQuery.trim() ? `No results for ${searchQuery}`: 'Search for a movie'}
+                </Text>
+            </View>
+          ): null
         }
-
       />
     </View>
   )
