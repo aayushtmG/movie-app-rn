@@ -17,7 +17,7 @@ const TrendingMovieCard = ({movie:{movie_id,title,poster_url},index}: TrendingCa
           <MaskedView maskElement={<Text className='font-bold text-white text-6xl'>{index+1}</Text>}>
           <Image source={images.rankingGradient} className='size-14' resizeMode='cover'/></MaskedView>
         </View>
-        <Text className='mt-2 text-sm font-bold text-light-200'>{title}</Text> 
+        <Text className='ml-2 mt-2 text-sm font-bold text-light-200'>{title}</Text> 
       </TouchableOpacity>
     </Link>
   )
