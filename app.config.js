@@ -8,8 +8,8 @@ export default {
       package: "com.aayush.movieghar"
     },
     extra: {
-      eas: {
-        projectId: "432fb16d-adff-4217-927c-f70aeab049f0"
+      "eas": {
+        "projectId": "432fb16d-adff-4217-927c-f70aeab049f0"
       },
       EXPO_PUBLIC_API_KEY: process.env.EXPO_PUBLIC_API_KEY,
       EXPO_PUBLIC_APPWRITE_PROJECT_ID: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
