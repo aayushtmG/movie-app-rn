@@ -17,11 +17,5 @@ export default {
       EXPO_PUBLIC_APPWRITE_DATABASE_ID: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
       EXPO_PUBLIC_APPWRITE_COLLECTION_ID: process.env.EXPO_PUBLIC_APPWRITE_COLLECTION_ID
     },
-    "updates": {
-      "url": "https://u.expo.dev/432fb16d-adff-4217-927c-f70aeab049f0"
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    }
   },
 };
