@@ -7,6 +7,7 @@ export default {
     android: {
       package: "com.aayush.movieghar"
     },
+    owner: "aayush2k2",
     extra: {
       "eas": {
         "projectId": "432fb16d-adff-4217-927c-f70aeab049f0"
